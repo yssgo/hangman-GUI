@@ -1,0 +1,491 @@
+SplineFontDB: 3.2
+FontName: Hangman_Stage
+FullName: Hangman_Stage
+FamilyName: Hangman_Stage
+Weight: Normal
+Copyright: Copyright (C) 2024 by Hangman Tkinter. All rights reserved.
+Version: 1.0
+ItalicAngle: 0
+UnderlinePosition: 0
+UnderlineWidth: 0
+Ascent: 819
+Descent: 205
+InvalidEm: 0
+sfntRevision: 0x00010000
+LayerCount: 2
+Layer: 0 1 "Back" 1
+Layer: 1 1 "Fore" 0
+XUID: [1021 211 731364541 31717]
+UseXUID: 1
+StyleMap: 0x0040
+FSType: 0
+OS2Version: 1
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 0
+CreationTime: 1717765258
+ModificationTime: 1717801242
+PfmFamily: 17
+TTFWeight: 400
+TTFWidth: 5
+LineGap: 92
+VLineGap: 0
+Panose: 2 0 5 9 0 0 0 0 0 0
+OS2TypoAscent: 819
+OS2TypoAOffset: 0
+OS2TypoDescent: -205
+OS2TypoDOffset: 0
+OS2TypoLinegap: 92
+OS2WinAscent: 747
+OS2WinAOffset: 0
+OS2WinDescent: 154
+OS2WinDOffset: 0
+HheadAscent: 747
+HheadAOffset: 0
+HheadDescent: -154
+HheadDOffset: 0
+OS2SubXSize: 665
+OS2SubYSize: 716
+OS2SubXOff: 0
+OS2SubYOff: 143
+OS2SupXSize: 665
+OS2SupYSize: 716
+OS2SupXOff: 0
+OS2SupYOff: 491
+OS2StrikeYSize: 51
+OS2StrikeYPos: 265
+OS2Vendor: 'PfEd'
+OS2CodePages: 00000001.00000000
+OS2UnicodeRanges: 00000001.00000000.00000000.00000000
+MarkAttachClasses: 1
+DEI: 91125
+ShortTable: cvt  2
+  34
+  648
+EndShort
+ShortTable: maxp 16
+  1
+  0
+  10
+  45
+  2
+  0
+  0
+  2
+  0
+  1
+  1
+  0
+  64
+  46
+  0
+  0
+EndShort
+LangName: 1033 "" "" "" "" "" "1.0" "" "" "" "" "" "" "" "This Font Software is licensed under the SIL Open Font License, Version 1.1.+AAoA-This license is copied below, and is also available with a FAQ at:+AAoA-http://scripts.sil.org/OFL+AAoACgAK------------------------------------------------------------+AAoA-SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007+AAoA------------------------------------------------------------+AAoACgAA-PREAMBLE+AAoA-The goals of the Open Font License (OFL) are to stimulate worldwide+AAoA-development of collaborative font projects, to support the font creation+AAoA-efforts of academic and linguistic communities, and to provide a free and+AAoA-open framework in which fonts may be shared and improved in partnership+AAoA-with others.+AAoACgAA-The OFL allows the licensed fonts to be used, studied, modified and+AAoA-redistributed freely as long as they are not sold by themselves. The+AAoA-fonts, including any derivative works, can be bundled, embedded, +AAoA-redistributed and/or sold with any software provided that any reserved+AAoA-names are not used by derivative works. The fonts and derivatives,+AAoA-however, cannot be released under any other type of license. The+AAoA-requirement for fonts to remain under this license does not apply+AAoA-to any document created using the fonts or their derivatives.+AAoACgAA-DEFINITIONS+AAoAIgAA-Font Software+ACIA refers to the set of files released by the Copyright+AAoA-Holder(s) under this license and clearly marked as such. This may+AAoA-include source files, build scripts and documentation.+AAoACgAi-Reserved Font Name+ACIA refers to any names specified as such after the+AAoA-copyright statement(s).+AAoACgAi-Original Version+ACIA refers to the collection of Font Software components as+AAoA-distributed by the Copyright Holder(s).+AAoACgAi-Modified Version+ACIA refers to any derivative made by adding to, deleting,+AAoA-or substituting -- in part or in whole -- any of the components of the+AAoA-Original Version, by changing formats or by porting the Font Software to a+AAoA-new environment.+AAoACgAi-Author+ACIA refers to any designer, engineer, programmer, technical+AAoA-writer or other person who contributed to the Font Software.+AAoACgAA-PERMISSION & CONDITIONS+AAoA-Permission is hereby granted, free of charge, to any person obtaining+AAoA-a copy of the Font Software, to use, study, copy, merge, embed, modify,+AAoA-redistribute, and sell modified and unmodified copies of the Font+AAoA-Software, subject to the following conditions:+AAoACgAA-1) Neither the Font Software nor any of its individual components,+AAoA-in Original or Modified Versions, may be sold by itself.+AAoACgAA-2) Original or Modified Versions of the Font Software may be bundled,+AAoA-redistributed and/or sold with any software, provided that each copy+AAoA-contains the above copyright notice and this license. These can be+AAoA-included either as stand-alone text files, human-readable headers or+AAoA-in the appropriate machine-readable metadata fields within text or+AAoA-binary files as long as those fields can be easily viewed by the user.+AAoACgAA-3) No Modified Version of the Font Software may use the Reserved Font+AAoA-Name(s) unless explicit written permission is granted by the corresponding+AAoA-Copyright Holder. This restriction only applies to the primary font name as+AAoA-presented to the users.+AAoACgAA-4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font+AAoA-Software shall not be used to promote, endorse or advertise any+AAoA-Modified Version, except to acknowledge the contribution(s) of the+AAoA-Copyright Holder(s) and the Author(s) or with their explicit written+AAoA-permission.+AAoACgAA-5) The Font Software, modified or unmodified, in part or in whole,+AAoA-must be distributed entirely under this license, and must not be+AAoA-distributed under any other license. The requirement for fonts to+AAoA-remain under this license does not apply to any document created+AAoA-using the Font Software.+AAoACgAA-TERMINATION+AAoA-This license becomes null and void if any of the above conditions are+AAoA-not met.+AAoACgAA-DISCLAIMER+AAoA-THE FONT SOFTWARE IS PROVIDED +ACIA-AS IS+ACIA, WITHOUT WARRANTY OF ANY KIND,+AAoA-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF+AAoA-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT+AAoA-OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE+AAoA-COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,+AAoA-INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL+AAoA-DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING+AAoA-FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM+AAoA-OTHER DEALINGS IN THE FONT SOFTWARE." "http://scripts.sil.org/OFL"
+GaspTable: 1 65535 2 0
+Encoding: UnicodeBmp
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+WinInfo: 50 25 11
+BeginPrivate: 0
+EndPrivate
+TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
+BeginChars: 65539 10
+
+StartChar: .notdef
+Encoding: 65536 -1 0
+Width: 1024
+GlyphClass: 1
+Flags: W
+TtInstrs:
+PUSHB_2
+ 1
+ 0
+MDAP[rnd]
+ALIGNRP
+PUSHB_3
+ 7
+ 4
+ 0
+MIRP[min,rnd,black]
+SHP[rp2]
+PUSHB_2
+ 6
+ 5
+MDRP[rp0,min,rnd,grey]
+ALIGNRP
+PUSHB_3
+ 3
+ 2
+ 0
+MIRP[min,rnd,black]
+SHP[rp2]
+SVTCA[y-axis]
+PUSHB_2
+ 3
+ 0
+MDAP[rnd]
+ALIGNRP
+PUSHB_3
+ 5
+ 4
+ 0
+MIRP[min,rnd,black]
+SHP[rp2]
+PUSHB_3
+ 7
+ 6
+ 1
+MIRP[rp0,min,rnd,grey]
+ALIGNRP
+PUSHB_3
+ 1
+ 2
+ 0
+MIRP[min,rnd,black]
+SHP[rp2]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+34 0 m 1,0,-1
+ 34 682 l 1,1,-1
+ 306 682 l 1,2,-1
+ 306 0 l 1,3,-1
+ 34 0 l 1,0,-1
+68 34 m 1,4,-1
+ 272 34 l 1,5,-1
+ 272 648 l 1,6,-1
+ 68 648 l 1,7,-1
+ 68 34 l 1,4,-1
+EndSplineSet
+EndChar
+
+StartChar: .null
+Encoding: 65537 -1 1
+Width: 0
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+EndChar
+
+StartChar: nonmarkingreturn
+Encoding: 65538 -1 2
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+EndChar
+
+StartChar: zero
+Encoding: 48 48 3
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+374 747 m 1,0,-1
+ 848 747 l 1,1,-1
+ 848 -136 l 1,2,-1
+ 994 -136 l 1,3,-1
+ 994 -154 l 1,4,-1
+ 30 -154 l 1,5,-1
+ 30 -136 l 1,6,-1
+ 840 -136 l 1,7,-1
+ 840 739 l 1,8,-1
+ 382 739 l 1,9,-1
+ 382 533 l 1,10,11
+ 409 533 409 533 426.5 512 c 128,-1,12
+ 444 491 444 491 444 462 c 0,13,14
+ 444 435 444 435 427.5 414.5 c 128,-1,15
+ 411 394 411 394 386 391 c 1,16,-1
+ 496 263 l 1,17,-1
+ 488 257 l 1,18,-1
+ 382 383 l 1,19,-1
+ 382 183 l 1,20,-1
+ 496 50 l 1,21,-1
+ 488 44 l 1,22,-1
+ 378 175 l 1,23,-1
+ 268 44 l 1,24,-1
+ 260 50 l 1,25,-1
+ 374 183 l 1,26,-1
+ 374 383 l 1,27,-1
+ 268 257 l 1,28,-1
+ 260 263 l 1,29,-1
+ 370 391 l 1,30,31
+ 345 394 345 394 328.5 414.5 c 128,-1,32
+ 312 435 312 435 312 462 c 0,33,34
+ 312 491 312 491 329.5 512 c 128,-1,35
+ 347 533 347 533 374 533 c 1,36,-1
+ 374 747 l 1,0,-1
+378 525 m 128,-1,38
+ 354 525 354 525 337 506.5 c 128,-1,39
+ 320 488 320 488 320 462 c 128,-1,40
+ 320 436 320 436 337 417.5 c 128,-1,41
+ 354 399 354 399 378 399 c 128,-1,42
+ 402 399 402 399 419 417.5 c 128,-1,43
+ 436 436 436 436 436 462 c 128,-1,44
+ 436 488 436 488 419 506.5 c 128,-1,37
+ 402 525 402 525 378 525 c 128,-1,38
+EndSplineSet
+EndChar
+
+StartChar: one
+Encoding: 49 49 4
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+374 747 m 1,0,-1
+ 848 747 l 1,1,-1
+ 848 -136 l 1,2,-1
+ 994 -136 l 1,3,-1
+ 994 -154 l 1,4,-1
+ 30 -154 l 1,5,-1
+ 30 -136 l 1,6,-1
+ 840 -136 l 1,7,-1
+ 840 739 l 1,8,-1
+ 382 739 l 1,9,-1
+ 382 533 l 1,10,11
+ 409 533 409 533 426.5 512 c 128,-1,12
+ 444 491 444 491 444 462 c 0,13,14
+ 444 435 444 435 427.5 414.5 c 128,-1,15
+ 411 394 411 394 386 391 c 1,16,-1
+ 496 263 l 1,17,-1
+ 488 257 l 1,18,-1
+ 382 383 l 1,19,-1
+ 382 181 l 1,20,-1
+ 378 181 l 1,21,-1
+ 382 179 l 1,22,-1
+ 268 44 l 1,23,-1
+ 260 50 l 1,24,-1
+ 374 183 l 1,25,-1
+ 374 383 l 1,26,-1
+ 268 257 l 1,27,-1
+ 260 263 l 1,28,-1
+ 370 391 l 1,29,30
+ 345 394 345 394 328.5 414.5 c 128,-1,31
+ 312 435 312 435 312 462 c 0,32,33
+ 312 491 312 491 329.5 512 c 128,-1,34
+ 347 533 347 533 374 533 c 1,35,-1
+ 374 747 l 1,0,-1
+378 525 m 128,-1,37
+ 354 525 354 525 337 506.5 c 128,-1,38
+ 320 488 320 488 320 462 c 128,-1,39
+ 320 436 320 436 337 417.5 c 128,-1,40
+ 354 399 354 399 378 399 c 128,-1,41
+ 402 399 402 399 419 417.5 c 128,-1,42
+ 436 436 436 436 436 462 c 128,-1,43
+ 436 488 436 488 419 506.5 c 128,-1,36
+ 402 525 402 525 378 525 c 128,-1,37
+EndSplineSet
+EndChar
+
+StartChar: two
+Encoding: 50 50 5
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+374 747 m 1,0,-1
+ 848 747 l 1,1,-1
+ 848 -136 l 1,2,-1
+ 994 -136 l 1,3,-1
+ 994 -154 l 1,4,-1
+ 30 -154 l 1,5,-1
+ 30 -136 l 1,6,-1
+ 840 -136 l 1,7,-1
+ 840 739 l 1,8,-1
+ 382 739 l 1,9,-1
+ 382 533 l 1,10,11
+ 409 533 409 533 426.5 512 c 128,-1,12
+ 444 491 444 491 444 462 c 0,13,14
+ 444 435 444 435 427.5 414.5 c 128,-1,15
+ 411 394 411 394 386 391 c 1,16,-1
+ 496 263 l 1,17,-1
+ 488 257 l 1,18,-1
+ 382 383 l 1,19,-1
+ 382 181 l 1,20,-1
+ 374 181 l 1,21,-1
+ 374 383 l 1,22,-1
+ 268 257 l 1,23,-1
+ 260 263 l 1,24,-1
+ 370 391 l 1,25,26
+ 345 394 345 394 328.5 414.5 c 128,-1,27
+ 312 435 312 435 312 462 c 0,28,29
+ 312 491 312 491 329.5 512 c 128,-1,30
+ 347 533 347 533 374 533 c 1,31,-1
+ 374 747 l 1,0,-1
+378 525 m 128,-1,33
+ 354 525 354 525 337 506.5 c 128,-1,34
+ 320 488 320 488 320 462 c 128,-1,35
+ 320 436 320 436 337 417.5 c 128,-1,36
+ 354 399 354 399 378 399 c 128,-1,37
+ 402 399 402 399 419 417.5 c 128,-1,38
+ 436 436 436 436 436 462 c 128,-1,39
+ 436 488 436 488 419 506.5 c 128,-1,32
+ 402 525 402 525 378 525 c 128,-1,33
+EndSplineSet
+EndChar
+
+StartChar: three
+Encoding: 51 51 6
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+374 747 m 1,0,-1
+ 848 747 l 1,1,-1
+ 848 -136 l 1,2,-1
+ 994 -136 l 1,3,-1
+ 994 -154 l 1,4,-1
+ 30 -154 l 1,5,-1
+ 30 -136 l 1,6,-1
+ 840 -136 l 1,7,-1
+ 840 739 l 1,8,-1
+ 382 739 l 1,9,-1
+ 382 533 l 1,10,11
+ 409 533 409 533 426.5 512 c 128,-1,12
+ 444 491 444 491 444 462 c 128,-1,13
+ 444 433 444 433 426 411.5 c 128,-1,14
+ 408 390 408 390 382 390 c 1,15,-1
+ 382 181 l 1,16,-1
+ 374 181 l 1,17,-1
+ 374 383 l 1,18,-1
+ 268 257 l 1,19,-1
+ 260 263 l 1,20,-1
+ 370 390 l 1,21,22
+ 345 393 345 393 328.5 414 c 128,-1,23
+ 312 435 312 435 312 462 c 0,24,25
+ 312 491 312 491 329.5 512 c 128,-1,26
+ 347 533 347 533 374 533 c 1,27,-1
+ 374 747 l 1,0,-1
+378 525 m 128,-1,29
+ 354 525 354 525 337 506.5 c 128,-1,30
+ 320 488 320 488 320 462 c 128,-1,31
+ 320 436 320 436 337 417.5 c 128,-1,32
+ 354 399 354 399 378 399 c 128,-1,33
+ 402 399 402 399 419 417.5 c 128,-1,34
+ 436 436 436 436 436 462 c 128,-1,35
+ 436 488 436 488 419 506.5 c 128,-1,28
+ 402 525 402 525 378 525 c 128,-1,29
+EndSplineSet
+EndChar
+
+StartChar: four
+Encoding: 52 52 7
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+374 747 m 1,0,-1
+ 848 747 l 1,1,-1
+ 848 -136 l 1,2,-1
+ 994 -136 l 1,3,-1
+ 994 -154 l 1,4,-1
+ 30 -154 l 1,5,-1
+ 30 -136 l 1,6,-1
+ 840 -136 l 1,7,-1
+ 840 739 l 1,8,-1
+ 382 739 l 1,9,-1
+ 382 533 l 1,10,11
+ 409 533 409 533 426.5 512 c 128,-1,12
+ 444 491 444 491 444 462 c 128,-1,13
+ 444 433 444 433 426 411.5 c 128,-1,14
+ 408 390 408 390 382 390 c 1,15,-1
+ 382 181 l 1,16,-1
+ 374 181 l 1,17,-1
+ 374 390 l 1,18,19
+ 348 390 348 390 330 411.5 c 128,-1,20
+ 312 433 312 433 312 462 c 128,-1,21
+ 312 491 312 491 329.5 512 c 128,-1,22
+ 347 533 347 533 374 533 c 1,23,-1
+ 374 747 l 1,0,-1
+378 525 m 128,-1,25
+ 354 525 354 525 337 506.5 c 128,-1,26
+ 320 488 320 488 320 462 c 128,-1,27
+ 320 436 320 436 337 417.5 c 128,-1,28
+ 354 399 354 399 378 399 c 128,-1,29
+ 402 399 402 399 419 417.5 c 128,-1,30
+ 436 436 436 436 436 462 c 128,-1,31
+ 436 488 436 488 419 506.5 c 128,-1,24
+ 402 525 402 525 378 525 c 128,-1,25
+EndSplineSet
+EndChar
+
+StartChar: five
+Encoding: 53 53 8
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+374 747 m 1,0,-1
+ 848 747 l 1,1,-1
+ 848 -136 l 1,2,-1
+ 994 -136 l 1,3,-1
+ 994 -154 l 1,4,-1
+ 30 -154 l 1,5,-1
+ 30 -136 l 1,6,-1
+ 840 -136 l 1,7,-1
+ 840 739 l 1,8,-1
+ 382 739 l 1,9,-1
+ 382 533 l 1,10,11
+ 409 533 409 533 426.5 512 c 128,-1,12
+ 444 491 444 491 444 462 c 0,13,14
+ 444 432 444 432 425 411 c 128,-1,15
+ 406 390 406 390 378 390 c 0,16,17
+ 351 390 351 390 331.5 411 c 128,-1,18
+ 312 432 312 432 312 462 c 0,19,20
+ 312 491 312 491 329.5 512 c 128,-1,21
+ 347 533 347 533 374 533 c 1,22,-1
+ 374 747 l 1,0,-1
+378 525 m 128,-1,24
+ 354 525 354 525 337 506.5 c 128,-1,25
+ 320 488 320 488 320 462 c 128,-1,26
+ 320 436 320 436 337 417.5 c 128,-1,27
+ 354 399 354 399 378 399 c 128,-1,28
+ 402 399 402 399 419 417.5 c 128,-1,29
+ 436 436 436 436 436 462 c 128,-1,30
+ 436 488 436 488 419 506.5 c 128,-1,23
+ 402 525 402 525 378 525 c 128,-1,24
+EndSplineSet
+EndChar
+
+StartChar: six
+Encoding: 54 54 9
+Width: 1024
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+374 747 m 1,0,-1
+ 848 747 l 1,1,-1
+ 848 -136 l 1,2,-1
+ 994 -136 l 1,3,-1
+ 994 -154 l 1,4,-1
+ 30 -154 l 1,5,-1
+ 30 -136 l 1,6,-1
+ 840 -136 l 1,7,-1
+ 840 739 l 1,8,-1
+ 382 739 l 1,9,-1
+ 382 529 l 1,10,-1
+ 374 529 l 1,11,-1
+ 374 747 l 1,0,-1
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont

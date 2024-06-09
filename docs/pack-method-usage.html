@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+            <html>
+                <head>                    
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+                    <title>pack-method-usage.md</title>
+                    <style type="text/css">
+                    /*
+Copyright (c) 2017 Chris Patuzzo
+https://twitter.com/chrispatuzzo
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px;
+  color: #333;
+}
+
+body &gt; *:first-child {
+  margin-top: 0 !important;
+}
+
+body &gt; *:last-child {
+  margin-bottom: 0 !important;
+}
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a.absent {
+  color: #cc0000;
+}
+
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative;
+}
+
+h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  text-decoration: none;
+}
+
+h1 tt, h1 code {
+  font-size: inherit;
+}
+
+h2 tt, h2 code {
+  font-size: inherit;
+}
+
+h3 tt, h3 code {
+  font-size: inherit;
+}
+
+h4 tt, h4 code {
+  font-size: inherit;
+}
+
+h5 tt, h5 code {
+  font-size: inherit;
+}
+
+h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: black;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777777;
+  font-size: 14px;
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0;
+}
+
+/*
+hr {
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+*/
+body &gt; h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body &gt; h1:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body &gt; h1:first-child + h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body &gt; h3:first-child, body &gt; h4:first-child, body &gt; h5:first-child, body &gt; h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0;
+}
+
+li p.first {
+  display: inline-block;
+}
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul :first-child, ol :first-child {
+  margin-top: 0;
+}
+
+ul :last-child, ol :last-child {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt &gt; :first-child {
+  margin-top: 0;
+}
+
+dl dt &gt; :last-child {
+  margin-bottom: 0;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd &gt; :first-child {
+  margin-top: 0;
+}
+
+dl dd &gt; :last-child {
+  margin-bottom: 0;
+}
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
+}
+
+blockquote &gt; :first-child {
+  margin-top: 0;
+}
+
+blockquote &gt; :last-child {
+  margin-bottom: 0;
+}
+
+table {
+  padding: 0;
+}
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th :first-child, table tr td :first-child {
+  margin-top: 0;
+}
+
+table tr th :last-child, table tr td :last-child {
+  margin-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+span.frame &gt; span {
+  border: 1px solid #dddddd;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: 13px 0 0;
+  padding: 7px;
+  width: auto;
+}
+
+span.frame span img {
+  display: block;
+  float: left;
+}
+
+span.frame span span {
+  clear: both;
+  color: #333333;
+  display: block;
+  padding: 5px 0 0;
+}
+
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+span.align-center &gt; span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: center;
+}
+
+span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+span.align-right &gt; span {
+  display: block;
+  overflow: hidden;
+  margin: 13px 0 0;
+  text-align: right;
+}
+
+span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left;
+}
+
+span.float-left span {
+  margin: 13px 0 0;
+}
+
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right;
+}
+
+span.float-right &gt; span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: right;
+}
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+/* Syntax Highlighting */
+
+.plainText {
+ background-color: #FFFFFF;
+ color: #000000;
+}
+.htmlServerSideScript {
+ background-color: #FFFF00;
+}
+.htmlComment {
+ color: #008000;
+}
+.htmlTagDelimiter {
+ color: #0000FF;
+}
+.htmlElementName {
+ color: #A31515;
+}
+.htmlAttributeName {
+ color: #FF0000;
+}
+.htmlAttributeValue {
+ color: #0000FF;
+}
+.htmlOperator {
+ color: #0000FF;
+}
+.comment {
+ color: #008000;
+}
+.xmlDocTag {
+ color: #808080;
+}
+.xmlDocComment {
+ color: #008000;
+}
+.string {
+ color: #A31515;
+}
+.stringCSharpVerbatim {
+ color: #A31515;
+}
+.keyword {
+ color: #0000FF;
+}
+.preprocessorKeyword {
+ color: #0000FF;
+}
+.htmlEntity {
+ color: #FF0000;
+}
+.xmlAttribute {
+ color: #FF0000;
+}
+.xmlAttributeQuotes {
+ color: #000000;
+}
+.xmlAttributeValue {
+ color: #0000FF;
+}
+.xmlCDataSection {
+ color: #808080;
+}
+.xmlComment {
+ color: #008000;
+}
+.xmlDelimiter {
+ color: #0000FF;
+}
+.xmlName {
+ color: #A31515;
+}
+.className {
+ color: #48D1CC;
+}
+.cssSelector {
+ color: #A31515;
+}
+.cssPropertyName {
+ color: #FF0000;
+}
+.cssPropertyValue {
+ color: #0000FF;
+}
+.sqlSystemFunction {
+ color: #FF00FF;
+}
+.powershellAttribute {
+ color: #B0E0E6;
+}
+.powershellOperator {
+ color: #808080;
+}
+.powershellType {
+ color: #008080;
+}
+.powershellVariable {
+ color: #FF4500;
+}
+.type {
+ color: #008080;
+}
+.typeVariable {
+ color: #008080;
+ font-style: italic;
+}
+.namespace {
+ color: #000080;
+}
+.constructor {
+ color: #800080;
+}
+.predefined {
+ color: #000080;
+}
+.pseudoKeyword {
+ color: #000080;
+}
+.stringEscape {
+ color: #808080;
+}
+.controlKeyword {
+ color: #0000FF;
+}
+.number {
+}
+.operator {
+}
+.delimiter {
+}
+.markdownHeader {
+ font-weight: bold;
+}
+.markdownCode {
+ color: #008080;
+}
+.markdownListItem {
+ font-weight: bold;
+}
+.italic {
+ font-style: italic;
+}
+.bold {
+ font-weight: bold;
+}
+
+                    </style>
+                </head>
+                <body style="">
+                <h1 id="1">레이아웃 관리: pack 메서드</h1>
+<ul id="3">
+<li id="3"><p id="3">TOC</p>
+<ul id="4">
+<li id="4"><a href="#widget">위젯</a></li>
+<li id="5"><a href="#parcel">꾸러미</a></li>
+<li id="6"><a href="#side">side</a>
+<ul id="7">
+<li id="7"><a href="#side=%27top%27">side='top'</a></li>
+<li id="8"><a href="#side=%27bottom%27">side='bottom'</a></li>
+<li id="9"><a href="#side=%27left%27">side='left'</a></li>
+<li id="10"><a href="#side=%27right%27">side='right'</a></li>
+</ul>
+</li>
+<li id="11"><a href="#expand">expand</a>
+<ul id="12">
+<li id="12"><a href="#expand-True">expand=True</a></li>
+<li id="13"><a href="#expand-False">expand=False</a></li>
+</ul>
+</li>
+<li id="14"><a href="#anchor">anchor</a>
+<ul id="15">
+<li id="15"><a href="#anchor-center">anchor='center'</a></li>
+<li id="16"><a href="#anchor-NORTH">anchor='n' (anchor=tkinter.NORTH)</a></li>
+<li id="17"><a href="#anchor-EAST">anchor='e' (anchor=tkinter.EAST)</a></li>
+<li id="18"><a href="#anchor-SOUTH">anchor='s' (anchor=tkinter.SOUTH)</a></li>
+<li id="19"><a href="#anchor-WEST">anchor='w' (anchor=tkinter.WEST)</a></li>
+<li id="20"><a href="#anchor-NORTHEAST">anchor='ne' (anchor=tkinter.NORTHEAST)</a></li>
+<li id="21"><a href="#anchor-SOUTHEAST">anchor='se' (anchor=tkinter.SOUTHEAST)</a></li>
+<li id="22"><a href="#anchor-SOUTHWEST">anchor='sw' (anchor=tkinter.SOUTHWEST)</a></li>
+<li id="23"><a href="#anchor-NORTHWEST">anchor='nw' (anchor=tkinter.NORTHWEST)</a></li>
+</ul>
+</li>
+<li id="24"><a href="#fill">fill</a>
+<ul id="25">
+<li id="25"><a href="#fill-X">fill='x'</a></li>
+<li id="26"><a href="#fill-Y">fill='y'</a></li>
+<li id="27"><a href="#fill-BOTH%27">fill='both'</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="30"><p id="30"><strong>참고</strong></p>
+<ol id="32">
+<li id="32"><a href="https://blog.naver.com/PostView.naver?blogId=dudwo567890&amp;logNo=130167237607">https://blog.naver.com/PostView.naver?blogId=dudwo567890&amp;logNo=130167237607</a> (블로그 글, 한글)</li>
+<li id="33"><a href="https://tcl.tk/man/tcl/TkCmd/pack.htm#M27">https://tcl.tk/man/tcl/TkCmd/pack.htm#M27</a> (매뉴얼, 영문)</li>
+</ol>
+</li>
+</ul>
+<style> code {font-family: D2Coding; }</style>
+<h2 id="38">위젯<a id="widget"></a></h2>
+<ul id="40">
+<li id="40"><p id="40">위젯 ( padx, pady, ipadx, ipady 의 기본값은 0)</p>
+<pre><code id="43">  +--------------------------------------+
+                   pady
+  .      +------------------------+      .
+         |        ipady           |
+  .      |       + + + + +        |      .
+    padx | ipadx + 내용  + ipdadx | padx
+  .      |       + + + + +        |      .
+         |         ipady          |
+  .      +------------------------+      .
+                   pady
+  +--------------------------------------+
+</code></pre>
+</li>
+</ul>
+<h2 id="55">꾸러미<a id="parcel"></a></h2>
+<ul id="57">
+<li id="57"><p id="57">꾸러미 ( side='top 또는 side='bottom' 일 때 )</p>
+<pre><code id="59">  +--------------+-----------------------------+----------------+
+  | 왼쪽 빈 공간 |             위젯            | 오른쪽 빈 공간 |
+  +--------------+-----------------------------+----------------+
+</code></pre>
+</li>
+<li id="64"><p id="64">꾸러미 ( side='left 또는 side='right' 일 때)</p>
+<pre><code id="66">  +-----------+
+  |   위쪽    |
+  |  빈 공간  |
+  |           |
+  +  - - - -  +
+  |           |
+  |    위     |
+  |           |
+  |    젯     |
+  |           |
+  +  - - - -  +
+  |           |
+  |  아래쪽   |
+  | 빈 공간   |
+  +-----------+
+</code></pre>
+</li>
+</ul>
+<h2 id="82">side<a id="side"></a></h2>
+<h3 id="84">side='top'<a id="side='top'"></a></h3>
+<pre><code id="86">    +----------------------------+
+    |     첫 번째 꾸러미         |
+    +----------------------------+
+    |     두 번째 꾸러미         |
+    +----------------------------+
+    |                            |
+    |                            |
+    |       남은 빈 공간         |
+    |                            |
+    +----------------------------+
+</code></pre>
+<h3 id="97">side='bottom'<a id="side='bottom'"></a></h3>
+<pre><code id="99">    +----------------------------+
+    |                            |
+    |        남은 빈 공간        |
+    |                            |
+    |                            |
+    +----------------------------+
+    |     두 번째 꾸러미         |
+    +----------------------------+
+    |     첫 번째 꾸러미         |
+    +----------------------------+
+</code></pre>
+<h3 id="110">side='left'<a id="side='left'"></a></h3>
+<pre><code id="112">    +----+----+------------------+
+    | 첫 | 두 |                  |
+    |    |    |                  |
+    | 번 | 번 |                  |
+    | 째 | 째 |  빈 공간         |
+    |    |    |                  |
+    | 꾸 | 꾸 |                  |
+    | 러 | 러 |                  |
+    | 미 | 미 |                  |
+    +----+----+------------------+
+</code></pre>
+<h3 id="124">side='right'<a id="side='right'"></a></h3>
+<pre><code id="126">    +------------------+----+----+
+    |                  | 두 | 첫 |
+    |                  |    |    |
+    |                  | 번 | 번 |
+    |  빈 공간         | 째 | 째 |
+    |                  |    |    |
+    |                  | 꾸 | 꾸 |
+    |                  | 러 | 러 |
+    |                  | 미 | 미 |
+    +------------------+----+----+
+</code></pre>
+<h2 id="137">expand<a id="expand"></a></h2>
+<h3 id="139">expand=True<a id="expand-True"></a></h3>
+<ul id="141">
+<li id="141"><p id="141">두 번째 위젯이  expand=True 일 때</p>
+<ul id="143">
+<li id="143"><p id="143">side = 'top'</p>
+<pre><code id="145">  +----------------------------+
+  |     첫 번째 꾸러미         |
+  +----------------------------+
+  |                            |
+  |                            |
+  |     두 번째 꾸러미         |
+  |                            |
+  |                            |
+  +----------------------------+
+</code></pre>
+</li>
+<li id="155"><p id="155">side = 'left'</p>
+<pre><code id="157">  +----+-----------------------+
+  | 첫 |          두           |
+  |    |                       |
+  | 번 |          번           |
+  | 째 |          째           |
+  |    |                       |
+  | 꾸 |          꾸           |
+  | 러 |          러           |
+  | 미 |          미           |
+  +----+-----------------------+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="168">expand=False<a id="expand-False"></a></h3>
+<ul id="170">
+<li id="170"><p id="170">두 번째 위젯이  expand=False 일 때</p>
+<ul id="172">
+<li id="172"><p id="172">side = 'top'</p>
+<pre><code id="174">  +----------------------------+
+  |     첫 번째 꾸러미         |
+  +----------------------------+
+  |     두 번째 꾸러미         |
+  +----------------------------+
+  |                            |
+  |                            |
+  |        빈 공간             |
+  |                            |
+  +----------------------------+
+</code></pre>
+</li>
+<li id="185"><p id="185">side = 'left'</p>
+<pre><code id="187">  +----+----+------------------+
+  | 첫 | 두 |                  |
+  |    |    |                  |
+  | 번 | 번 |                  |
+  | 째 | 째 |      빈 공간     |
+  |    |    |                  |
+  | 꾸 | 꾸 |                  |
+  | 러 | 러 |                  |
+  | 미 | 미 |                  |
+  +----+----+------------------+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="199">anchor<a id="anchor"></a></h2>
+<h3 id="201">anchor='center' (anchor=tkinter.CENTER)<a id="anchor-CENTER"></a></h3>
+<pre><code id="203">    +--------------------------------------+  꾸러미
+    |                                      |
+    |              +--------+              |
+    |              |'center'|              |
+    |              +--------+              |
+    |                                      |
+    +--------------------------------------+
+</code></pre>
+<h3 id="211">anchor='n' (anchor=tkinter.NORTH)<a id="anchor-NORTH"></a></h3>
+<pre><code id="213">    +--------------+--------+--------------+  꾸러미
+    |              |   'n'  |              |
+    |              +--------+              |
+    |                                      |
+    |                                      |
+    |                                      |
+    +--------------------------------------+
+</code></pre>
+<h3 id="221">anchor='e' (anchor=tkinter.EAST)<a id="anchor-EAST"></a></h3>
+<pre><code id="223">    +--------------------------------------+  꾸러미
+    |                                      |
+    |                             +--------+
+    |                             |  'e'   |
+    |                             +--------+
+    |                                      |
+    +--------------------------------------+
+</code></pre>
+<h3 id="231">anchor='s' (anchor=tkinter.SOUTH)<a id="anchor-SOUTH"></a></h3>
+<pre><code id="233">    +--------------------------------------+  꾸러미
+    |                                      |
+    |                                      |
+    |                                      |
+    |              +--------+              |
+    |              |   's'  |              |
+    +--------------+--------+--------------+
+</code></pre>
+<h3 id="241">anchor='w' (anchor=tkinter.WEST)<a id="anchor-WEST"></a></h3>
+<pre><code id="243">    +--------------------------------------+  꾸러미
+    |                                      |
+    +--------+                             |
+    |  'w'   |                             |
+    +--------+                             |
+    |                                      |
+    +--------------------------------------+
+</code></pre>
+<h3 id="251">anchor='ne' (anchor=tkinter.NORTHEAST)<a id="anchor-NORTHEAST"></a></h3>
+<pre><code id="253">    +-----------------------------+--------+  꾸러미
+    |                             | 'ne'   |
+    |                             +--------+
+    |                                      |
+    |                                      |
+    |                                      |
+    +--------------------------------------+
+</code></pre>
+<h3 id="261">anchor='se' (anchor=tkinter.SOUTEAST)<a id="anchor-SOUTEAST"></a></h3>
+<pre><code id="263">    +--------------------------------------+  꾸러미
+    |                                      |
+    |                                      |
+    |                                      |
+    |                             +--------+
+    |                             |  'se'  |
+    +-----------------------------+--------+
+</code></pre>
+<h3 id="271">anchor='sw' (anchor=tkinter.SOUTWEST)<a id="anchor-SOUTWEST"></a></h3>
+<pre><code id="273">    +--------------------------------------+  꾸러미
+    |                                      |
+    |                                      |
+    |                                      |
+    +--------+                             |
+    |  'sw'  |                             |
+    +--------+-----------------------------+
+</code></pre>
+<h3 id="281">anchor='nw' (anchor=tkinter.NORTHWEST)<a id="anchor-NORTHWEST"></a></h3>
+<pre><code id="283">    +--------------------------------------+  꾸러미
+    |  'nw'  |                             |
+    +--------+                             |
+    |                                      |
+    |                                      |
+    |                                      |
+    +--------------------------------------+
+</code></pre>
+<h2 id="291">fill<a id="fill"></a></h2>
+<h3 id="293">fill='x'<a id="fill-X"></a></h3>
+<pre><code id="295">    | p   i  + + + + + + + + + + + + + + + + + + +  i   p |
+    | a   p  +                .    .             +  p   a |
+    | d | a  +                .내용.             +  a | d |
+    | x   d  +                .    .             +  d   x |
+    |     x  + + + + + + + + + + + + + + + + + + +  x     |
+</code></pre>
+<h3 id="302">fill='y'<a id="fill-Y"></a></h3>
+<pre><code id="304">     -------
+      pady
+      - - -
+      ipady
+    + + + + +
+    +       +
+    +       +
+    +       +
+    + . . . +
+    + 내용  +
+    + . . . +
+    +       +
+    +       +
+    +       +
+    +       +
+    + + +  +
+      ipady
+      - - -
+      pady
+     -------
+</code></pre>
+<h3 id="325">fill='both'<a id="fill-BOTH'"></a></h3>
+<pre><code id="327">                                 -------
+                                  pady
+                                  - - -
+                                  ipady
+    |        + + + + + + + + + + + + + + + + + + + + +        |
+    |        +                                       +        |
+    | p   i  +                                       +  i   p |
+    | a   p  +                  . . . .              +  p   a |
+    | d | a  +                  .내용 .              +  a | d |
+    | x   d  +                  . . . .              +  d   x |
+    |     x  +                                       +  x     |
+    |        +                                       +        |
+    |        + + + + + + + + + + + + + + + + + + + + +        |
+                                  ipady
+                                  - - -
+                                  pady
+                                 -------
+</code></pre>
+
+                </body>
+            </html>
+            
