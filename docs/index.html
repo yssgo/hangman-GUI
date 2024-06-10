@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+  <title>hangman-GUI</title>
+  <script src="scripts/prism_python.js"></script>  
+  <link href="styles/prism_python.css" type="text/css" rel="stylesheet">  
+  <link href="styles/hangman-GUI.css" type="text/css" rel="stylesheet"> 
+  <script src="scripts/hangman-GUI.js" defer></script>
+</head>
+
+<body>
+
+  <nav><a href="..">up</a> <a href="/">home</a></nav>
+  <pre id="code" class="language-python"><code>
+import tkinter as tk
+import random
+import copy
+import time
+from pathlib import Path
+
+# .pack 메서드의 side, anchor, fill, expand 옵션은 [pack-method-usage.html](pack-method-usage.html) 참조
+
+root = tk.Tk() # Tk 윈도우 메인 창 생성
+root.minsize(460,340) # 메인 창의 최소 크기.
+root.title(Path(__file__).name)
+
+word_list = [
+    'apple',
+    'banana',
+    'python',
+    'game',
+    'program',
+] 
+
+stages = [ r'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+'''
+]
+
+for row, subs in [
+    (5, r" /    |"), (5, r"      |"),
+    (4, r" /|   |"), (4, r"  |   |"),  (4, r"      |"),
+    (3, r"      |")]:
+    stage_lines = stages[-1].split('\n')
+    stage_lines[row] = subs
+    stages.append('\n'.join(stage_lines))
+
+logo = r'''
+ _
+| |
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __
+| '_  \/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |
+                   |___/
+'''
+
+# tk.Label 생성자의 font 키워드인자에 사용할 튜플.
+# (글꼴, 크기, 스타일)
+# 글꼴: 시스템에 설치한 폰트의 이름
+# 크기: 포인트 단위로 나타낸 세로 크기. 음수이면 픽셀 단위.
+#       포인트 단위 사용 권장.  72포인트가 1인치 이므로 1포인트 = DPI/72.
+#       (* 참고: 모니터의 DPI는 대략 root.winfo_fpixels('1i')의 반환값. *)
+# 스타일 : 'normal', 'bold', 'roman', 'italic', 'underline', 'overstrike'
+#          ('roman'은 사실상 'normal' 과 같음)
+FNT_BLURB= ('D2Coding', 8, 'normal')  # 사용한 폰트 알림에 사용할 글꼴
+FNT_WARNING =('D2Coding', 12, 'normal') # 이미 입력한 글자 경고에 사용할 글꼴.
+FNT_INPUT = FNT_STATE = ('D2Coding', 16, 'normal') # 글자 입력란, 스테이지 표시에 사용할 글꼴
+FNT_LOGO = ('D2Coding', 12, 'bold') # 행맨 로고 표시에 사용할 글꼴
+FNT_DISPLAY = ('D2Coding', 16, 'normal') # 단어 표시에 사용할 글꼴
+FNT_WIN = FNT_LOSE = ("D2Coding", 20,"bold") # 승,패 문구에 사용할 글꼴
+
+
+# lbl_logo: 로고를 표시할 라벨 위젯 이름을 lbl_logo로 정함.
+# root : 부모 (메인 창 또는 다른 위젯). 
+# text : 라벨에 표시할 텍스트
+# justify : text가 여러 줄일 때 사용. 'left' 는 왼쪽에 맞춤. 기본은 'center'로 가운데 맞춤.
+# fg : 글자색. 'blue'는 파랑.
+# bg : tk.Label 위젯의 배경색. '#eff'는 '#eeffff'와 같음. 연한 하늘색(R:238, R:255, B:255)'
+lbl_logo = tk.Label(root, text=logo, font=FNT_LOGO, justify='left', fg='blue', bg='#eff')
+# lbl_logo.pack : lbl_logo 라벨을 부모(root로 지정한) 위젯 안에 배치.
+# ipadx : x축 (가로) 내부 패딩(내부 여백)
+# ipady : y축 (세로) 내부 패딩(내부 여백)
+lbl_logo.pack(ipadx=20, ipady=20, expand=True)
+
+# * 위젯 : GUI 창 안에 넣는 각종 부품.
+
+# lbl_font_blurb : 사용한 폰트를 알려줄 라벨 위젯의 이름
+lbl_font_blurb = tk.Label(root, text='D2Coding 폰트를 사용합니다')
+lbl_font_blurb.pack()
+
+# tkinter 창 보이기
+# 행맨 로고 와 사용한 폰트 알림 표시
+
+root.update()
+
+# 로고 창 3.26초 동안 표시
+oldtime = newtime = time.time()
+while newtime - oldtime &lt; 3.26: 
+    newtime = time.time()
+
+lbl_logo.destroy() # 로고 라벨 제거
+lbl_font_blurb.destroy() # 사용한 폰트 알림 라벨 제거
+
+# 게임에 필요한 변수 값을 설정.
+def init_game():
+    global answer_word, memory, display
+    global end_of_game, live
+    
+    answer_word = random.choice(word_list)
+    memory = []
+    display = []
+    for i in answer_word: # answer_word의 문자열 개수만큼 반복
+        display += ['_']
+
+    end_of_game = False
+    live = 6
+
+init_game()
+
+# 주 프레임(위젯을 넣을 수 있는 사각형 공간) 위젯 생성
+mainframe = tk.Frame(root)
+mainframe.pack(expand=True, fill='both')
+
+# lbl_state: 현재 스테이지를 보여줄 라벨 위젯.  mainframe 에 배치
+# 텍스트는 stages[-1-live]안의 모든 줄
+# 왼쪽 정렬
+# 글자색은 어두운 빨강색. '#a00'은 '#aa0000'과 같음 (R:170, G:0, B:0)
+lbl_state = tk.Label(mainframe, text=stages[-1-live], font=FNT_STATE, justify='left', fg='#a00')
+lbl_state.pack(fill='x', expand=True)
+
+def longest(words):
+    return max(len(w) for w in words)
+
+# lbl_display: 단어 표시에 사용할 라벨 위젯. mainframe에 배치.
+# width: 라벨 위젯의 너비. 글자 수 단위.
+lbl_display = tk.Label(mainframe, text=' '.join(display), font=FNT_DISPLAY, width=max(longest(word_list),50))
+lbl_display.pack(fill='x', expand=True)
+
+# 입력용 프레임 생성. mainframe 안에 배치할 내부 프레임 위젯.
+frm_Input = tk.Frame(mainframe)
+
+# lbl_Input: 입력프롬프트용 라벨 위젯. 입력용 프레임(frm_Input) 에 배치할 것임.
+lbl_Input = tk.Label(frm_Input, text="알파벳을 입력하세요", font=FNT_INPUT)
+
+# 게임을 다시 시작할 때, 게임에 필요한 변수 다시 설정하고
+# 위젯 상태를 알맞게 변경.
+def new_game(*args):
+    if len(args)==0:
+        # Button clicked
+        pass
+    elif len(args)==1:
+        # Enter key pressed
+        pass        
+
+    # '입력' 버튼 위젯에 사용한 엔터 키 바인딩을 원래대로 되돌림.
+    btn_Input.unbind('&lt;Return&gt;')
+    init_game() # 게임에 필요한 변수 값을 다시 설정.
+    lbl_Warning.pack_forget() # 경고 라벨을 숨김
+    lbl_Lose.pack_forget() # 졌음을 표시하는 라벨을 숨김
+    lbl_Win.pack_forget() # 이겼음을 표시하는 라벨을 숨김
+    lbl_state.config(text=stages[-1-live]) # 현재 스테이지 라벨의 텍스트를 다시 설정
+    lbl_display.config(text=' '.join(display)) # 단어 표시 라벨의 텍스트를 다시 설정
+    ent_Input.bind('&lt;Return&gt;', check) # 입력 엔트리 위젯에서 엔터 키 눌렀을 때 check 함수를 실용하도록 키를 바인딩.
+    btn_Input.config(text='입력') # '입력' 버튼의 텍스트를 '입력'으로 변경
+    ent_Input.config(state='normal') # 입력 엔트리 위젯을 'normal'(정상) 상태 변경.
+    ent_Input.focus_set() # 창이 뜨면 입력 엔트리에 바로 입력할 수 있도록 키보드 포커스를 줌.    
+
+
+def check(*args):    
+    global end_of_game, live
+    if len(args)==0:
+        # Button clicked
+        pass
+    elif len(args)==1: # type(args[0])==tk.Event
+        # Enter key pressed
+        pass
+        
+    def hide_warning():
+        lbl_Warning.pack_forget() # 경고 라벨을 숨김
+
+    guess_letter = ent_Input.get().lower() # 입력 엔트리 위젯에 입력된 문자열을 얻고, 소문자로 바꿈.
+    ent_Input.delete(0,'end') # 입력 엔트리에 입력된 내용을 처음부터 끝까지 지움.
+
+    if guess_letter == '': # 입력 엔트리에 입력된 것이 없을 때
+        lbl_Warning.pack_forget() # 경고 라벨 숨김
+        return
+    if guess_letter in memory:
+        lbl_Warning.pack() # 경고 라벨 다시 표시
+        return
+    else:
+        lbl_Warning.pack_forget() # 경고 라벨 숨김
+        memory.append(guess_letter)
+
+    
+    for position in range(len(answer_word)):
+        if answer_word [position] == guess_letter:
+            display[position] = guess_letter
+
+    lbl_display.config(text = ' '.join(display)) # 단어 표시 라벨의 텍스트를 변경
+    
+    if guess_letter not in answer_word:
+        live -= 1
+        if live &gt;= 0:
+            lbl_state.config(text = stages[-1-live]) # 단어 표시 라벨의 텍스트를 변경
+
+    if live == 0:
+        end_of_game = True
+        lbl_Warning.pack_forget() # 경고 라벨 숨김
+        lbl_Lose.pack() # 패(졌습니다)를 표시하는 라벨 표시
+
+    elif "_" not in display:
+        end_of_game = True
+        lbl_Warning.pack_forget() # 경고 라벨 숨김
+        lbl_Win.pack() # 승(이겼습니다)을 표시하는 라벨 표시
+    
+    
+    if end_of_game:
+        ent_Input.unbind('&lt;Return&gt;') # 입력 엔트리 위젯의 엔터키 바인딩을 원래대로 되돌림.
+        ent_Input.config(state = 'disabled') # 입력 엔트리 위젯에 입력할 수 없게 'disabled' 상태로 변경.
+        
+        # 입력 버튼의 텍스트를 '새 게임'으로 변경.
+        # 버튼이 눌렸을 때 실행할 함수을 new_game으로 변경.
+        btn_Input.config(text = '새 게임', command=new_game)
+        # 버튼에 키보드 포커스가 있을때, 엔터 키를 누르면 실행할 함수를 new_game으로 변경.
+        btn_Input.bind('&lt;Return&gt;', new_game)
+        # 버튼에 키보드 포커스를 줌.
+        btn_Input.focus_set()
+    
+
+# entry_Input: 엔트리 위젯(글자 입력란으로 사용하는 위젯)생성. 글자를 입력할 위젯. 
+# 입력 프레임 안에 배치할 것임.
+# width: 위젯의 가로 크기. 글자 개수 단위.
+ent_Input = tk.Entry(frm_Input, width=2, font=FNT_INPUT)
+# 입력 엔트리에 키보드 포커스가 있을때, 엔터 키를 누르면 check함수가 실행되도록 키 바인딩을 변경.
+ent_Input.bind('&lt;Return&gt;', check)
+
+# 입력 버튼 위젯. 버튼을 누르면 실행할 명령을 check 함수로 설정.
+# 입력 프레임 안에 배치할 것임.
+btn_Input = tk.Button(frm_Input, text="입력", command=check,font=FNT_INPUT)
+
+# 입력프롬프트 라벨을 입력용 프레임 (frm_Input) 안에 배치.
+lbl_Input.pack(side='left',expand='true')
+# 글자 입력 위젯을 입력용 프레임 안에 배치.
+ent_Input.pack(side='left',expand='true')
+# 버튼 위젯을 입력용 프레임 안에 배치.
+btn_Input.pack(side='left',expand='true')
+frm_Input.pack(expand=True)
+
+frm_Warning = tk.Frame(mainframe)
+lbl_Warning = tk.Label(frm_Warning, text="이미 입력했던 알파벳입니다", font=FNT_WARNING)
+lbl_Lose = tk.Label(frm_Warning, text="졌습니다", font=FNT_LOSE, fg='#f88', bg='yellow')
+lbl_Win = tk.Label(frm_Warning, text="이겼습니다", font=FNT_WIN, fg='#00f', bg='#ff0')
+frm_Warning.pack(expand=True, fill='x')
+
+# 창이 뜨면 글자 입력 위젯에 바로 입력할 수 있도록 키보드 포커스를 줌.
+ent_Input.focus_set()
+
+# Tkinter의 메인 창에서 이벤트 루프를 돌림. 창을 닫아야 끝남.
+root.mainloop()
+
+</code></pre>
+</body>
+</html>
